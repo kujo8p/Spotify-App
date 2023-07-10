@@ -31,6 +31,11 @@ class ArtistCreate(CreateView):
     model = Artist
     fields = ["name", "genre"]
 
+
+class SongCreate(CreateView):
+    model = Song
+    fields = ["name", "artist"]
+
 class AuthURL(APIView):
   def get(self, request, format=None):
     scopes = 'user-read-playback-state user-modify-playback-state user-read-currently-playing user-library-read user-read-private'
