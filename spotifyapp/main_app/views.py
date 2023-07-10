@@ -6,7 +6,7 @@ from rest_framework.views import APIView
 from requests import Request, post
 from rest_framework import status
 from rest_framework.response import Response
-from .models import Artist, Song
+from .models import Artist, Song, Playlist
 
 def home(request):
     return render(request, "home.html")
