@@ -1,10 +1,12 @@
+import os
+import uuid
 from django.shortcuts import render
 from .credentials import REDIRECT_URI, CLIENT_ID, CLIENT_SECRET
 from rest_framework.views import APIView
 from requests import Request, post
 from rest_framework import status
 from rest_framework.response import Response
-from .models import Artist
+from .models import Artist, Song
 
 def home(request):
     return render(request, "home.html")
@@ -15,6 +17,13 @@ def about(request):
 def artist_index(request):
   artists = Artist.objects.all()
   return render(request, "artist/index.html", {'artists': artists})
+
+def artist_detail(request, artist_id):
+    artist = Artist.objects.get(id=artist_id)
+    songs = Song.objects.all()
+    return render(request, 'artist/detail.html', {
+        'artist': artist, 'songs': songs
+    })
 
 class AuthURL(APIView):
   def get(self, request, format=None):

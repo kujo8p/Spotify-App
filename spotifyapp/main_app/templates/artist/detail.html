@@ -1,0 +1,18 @@
+{% extends 'base.html' %} 
+{% block content %}
+<div class="container">
+  <h3> {{ artist.name }} </h3>
+</div>
+{% for songs in artist.song_set.all %}
+<div class="container">
+    <div class="card">
+      <div class="card-content">
+        <span class="card-title">{{ songs.name }}</span>
+        <p>Album: {{ songs.album }}</p>
+      </div>
+    </div>
+  </a>
+  </div>
+  {% endfor %}
+
+{% endblock %}
