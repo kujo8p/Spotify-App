@@ -4,5 +4,28 @@
 <div class="container">
   <h1>Home</h1>
 </div>
+  {% for playlist in playlists %}
+  <div class="container">
+    <div class="card">
+      <div class="card-content ">
+        <span class="card-title">{{ playlist.title }}</span>
+        <p class="truncate">{{ playlist.description }}</p>
+        <br>
+        {% for song in playlist.songs.all %}
+        <table class="striped">
+          <tbody>
+            <tr>
+              <h5>{{ song.name }}</h5>
+              <p>{{ song.artist }}</p>
+            </tr>
+          </tbody>
+        </table>
+      </ul>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
 
 {% endblock %}

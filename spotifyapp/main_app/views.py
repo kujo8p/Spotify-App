@@ -7,9 +7,11 @@ from requests import Request, post
 from rest_framework import status
 from rest_framework.response import Response
 from .models import Artist, Song, Playlist
+from django.views.generic.edit import CreateView
 
 def home(request):
-    return render(request, "home.html")
+    playlists = Playlist.objects.all()
+    return render(request, "home.html", {'playlists': playlists})
 
 def about(request):
     return render(request, "about.html")
@@ -24,6 +26,10 @@ def artist_detail(request, artist_id):
     return render(request, 'artist/detail.html', {
         'artist': artist, 'songs': songs
     })
+
+class ArtistCreate(CreateView):
+    model = Artist
+    fields = ["name", "genre"]
 
 class AuthURL(APIView):
   def get(self, request, format=None):
