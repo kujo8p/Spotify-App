@@ -8,6 +8,9 @@ from rest_framework.response import Response
 def home(request):
     return render(request, "home.html")
 
+def about(request):
+    return render(request, "about.html")
+
 class AuthURL(APIView):
   def get(self, request, format=None):
     scopes = 'user-read-playback-state user-modify-playback-state user-read-currently-playing user-library-read user-read-private'
