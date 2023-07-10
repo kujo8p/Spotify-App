@@ -4,12 +4,17 @@ from rest_framework.views import APIView
 from requests import Request, post
 from rest_framework import status
 from rest_framework.response import Response
+from .models import Artist
 
 def home(request):
     return render(request, "home.html")
 
 def about(request):
     return render(request, "about.html")
+
+def artist_index(request):
+  artists = Artist.objects.all()
+  return render(request, "artist/index.html", {'artists': artists})
 
 class AuthURL(APIView):
   def get(self, request, format=None):
