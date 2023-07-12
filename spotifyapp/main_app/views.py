@@ -1,6 +1,6 @@
 import os
 import uuid
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .credentials import REDIRECT_URI, CLIENT_ID, CLIENT_SECRET
 from rest_framework.views import APIView
 from requests import Request, post
@@ -26,6 +26,10 @@ def artist_detail(request, artist_id):
     return render(request, 'artist/detail.html', {
         'artist': artist, 'songs': songs
     })
+
+def assoc_song(request, playlist_id, song_id):
+    Playlist.objects.get(id=playlist_id).songs.add(song_id)
+    return redirect('home', playlist_id=playlist_id)
 
 class ArtistCreate(CreateView):
     model = Artist
