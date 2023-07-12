@@ -23,8 +23,19 @@
         <a href="{% url 'about' %}">About</a>
       </li>
 
-      <li>
-        <a href="{% url 'artist' %}">Artists</a>
+      <li class="padding">
+        <ul class="collapsible">
+          <li>
+            <a class="collapsible-header" tabindex="0">Artists</a>
+            <div class="collapsible-body">
+              <ul>
+                <li><a href="{% url 'artist' %}">Artists Library</a></li>
+                <li><a href="{% url 'artist_create' %}">Add an Artist</a></li>
+                
+              </ul>
+            </div>
+          </li>
+        </ul>
       </li>
 
     </ul>
@@ -33,6 +44,10 @@
       document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.sidenav');
     var instances = M.Sidenav.init(elems);
+  });
+  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.collapsible');
+    var instances = M.Collapsible.init(elems);
   });
     </script>
   </header>
