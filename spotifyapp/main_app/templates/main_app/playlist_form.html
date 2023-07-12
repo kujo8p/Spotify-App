@@ -1,0 +1,20 @@
+{% extends 'base.html' %} 
+
+{% block content %}
+<div class="container">
+  {% if object %}
+    <h1>Edit <span>{{object.name}}</span></h1>
+  {% else %}
+    <h1>Create a Playlist</h1>
+  {% endif %}
+  <form action="" method="POST">
+    {% csrf_token %}
+    <table>
+      {{ form.as_table }}
+    </table>
+    <br>
+    <input type="submit" value="Submit" class="btn large">
+  </form>
+</div>
+
+{% endblock %}

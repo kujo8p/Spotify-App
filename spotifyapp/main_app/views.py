@@ -36,6 +36,12 @@ class ArtistCreate(CreateView):
     fields = ["name", "genre"]
 
 
+class PlaylistCreate(CreateView):
+    model = Playlist
+    fields = ["title", "description"]
+    success_url = ""
+
+
 class SongCreate(CreateView):
     model = Song
     fields = ["name", "artist"]
