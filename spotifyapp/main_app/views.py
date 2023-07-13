@@ -6,8 +6,12 @@ from rest_framework.views import APIView
 from requests import Request, post
 from rest_framework import status
 from rest_framework.response import Response
-from .models import Artist, Song, Playlist
+from .models import Artist, Song, Playlist, User
 from django.views.generic.edit import CreateView
+from django.contrib.auth import login
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 def home(request):
     playlists = Playlist.objects.all()
@@ -27,6 +31,12 @@ def artist_detail(request, artist_id):
         'artist': artist, 'songs': songs
     })
 
+def playlist_detail(request, playlist_id):
+    playlist = Playlist.objects.get(id=playlist_id)
+    return render (request, 'playlist/detail.html', {
+      'playlist': playlist
+    })
+
 def assoc_song(request, playlist_id, song_id):
     Playlist.objects.get(id=playlist_id).songs.add(song_id)
     return redirect('home', playlist_id=playlist_id)
@@ -41,29 +51,33 @@ class PlaylistCreate(CreateView):
     fields = ["title", "description"]
     success_url = ""
 
+    def form_valid(self, form):
+      form.instance.user = self.request.user
+      return super().form_valid(form)
+
 
 class SongCreate(CreateView):
     model = Song
     fields = ["name", "album"]
 
 def signup(request):
-    error_message = ''
-    if request.method == 'POST':
+  error_message = ''
+  if request.method == 'POST':
     # This is how to create a 'user' form object
     # that includes the data from the browser
-        form = UserCreationForm(request.POST)
-        if form.is_valid():
-        # This will add the user to the database
-            user = form.save()
-        # This is how we log a user in via code
-        login(request, user)
-        return redirect('home')
+    form = UserCreationForm(request.POST)
+    if form.is_valid():
+      # This will add the user to the database
+      user = form.save()
+      # This is how we log a user in via code
+      login(request, user)
+      return redirect('home')
     else:
-        error_message = 'Invalid sign up - try again'
-    # A bad POST or a GET request, so render signup.html with an empty form
-    form = UserCreationForm()
-    context = {'form': form, 'error_message': error_message}
-    return render(request, 'registration/signup.html', context)
+      error_message = 'Invalid sign up - try again'
+  # A bad POST or a GET request, so render signup.html with an empty form
+  form = UserCreationForm()
+  context = {'form': form, 'error_message': error_message}
+  return render(request, 'registration/signup.html', context)
 
 # class AuthURL(APIView):
 #   def get(self, request, format=None):

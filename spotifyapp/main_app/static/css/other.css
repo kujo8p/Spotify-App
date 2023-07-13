@@ -7,6 +7,10 @@ header, main, footer {
   padding-left: 300px;
 }
 
+h5 {
+  padding-left: 30px;
+}
+
 .padding {
   padding-left: 15px;
 }

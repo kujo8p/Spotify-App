@@ -14,7 +14,24 @@
 <body>
   <header>
     <ul id="slide-out" class="sidenav sidenav-fixed">
-      
+      <div class="row">
+        <div>
+          <h5>Profile</h5>
+          {% if user.is_authenticated %}
+
+        <ul>
+          <li> {{ user }}</li>
+          <li><a href="{% url 'logout' %}">Log Out</a></li>
+        </ul>
+        {% else %}
+        <ul>
+        <li><a href="{% url 'login' %}">Log In</a></li>
+        <li><a href="{% url 'signup' %}">Sign Up</a></li>
+      </ul>
+      {% endif %}
+      </div>
+    </div>
+    <li><div class="divider"></div></li>
       <li>
         <a href="{% url 'home' %}"><b>Spotify App</b></a>
       </li>
@@ -29,7 +46,6 @@
             <a class="collapsible-header" tabindex="0">Artists</a>
             <div class="collapsible-body">
               <ul>
-                {% if user.is_authenticated %}
                 <li><a href="{% url 'artist' %}">Artists Library</a></li>
                 <li><a href="{% url 'artist_create' %}">Add an Artist</a></li>
                 
@@ -53,16 +69,6 @@
     </script>
   </header>
   <main>
-    <div class="row">
-      <div class="col s6 offset-s9">
-      <h4>Profile</h4>
-      <a href="{% url 'logout' %}">Sign Out</a>
-      {% else %}
-      <a href="{% url 'login' %}">Log In</a>
-      <a href="{% url 'signup' %}">Sign Up</a>
-      {% endif %}
-    </div>
-  </div>
     {% block content %} 
     {% endblock %}
   </main>

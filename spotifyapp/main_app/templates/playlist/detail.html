@@ -1,0 +1,36 @@
+{% extends 'base.html' %} 
+{% block content %}
+<div class="container">
+  <h4> {{ playlist.title }} </h4>
+</div>
+<br>
+<div class="container">
+<div class="col s12 m8 offset-m1 xl7 offset-xl1">
+<div class="card">
+  <div class="card-content ">
+    <span class="card-title">{{ playlist.title }}</span>
+    <p class="truncate">{{ playlist.description }}</p>
+    <br>
+    {% for song in playlist.songs.all %}
+    <table class="striped">
+      <tbody>
+        <tr>
+          <h5>{{ song.name }}</h5>
+          <p>{{ song.artist }}</p>
+        </tr>
+      </tbody>
+    </table>
+  </ul>
+    {% endfor %}
+  </div>
+</div>
+</div>
+
+
+
+
+
+
+</div>
+</div>
+{% endblock %}
