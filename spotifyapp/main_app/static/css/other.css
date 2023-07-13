@@ -11,6 +11,10 @@ header, main, footer {
   padding-left: 15px;
 }
 
+.col {
+  margin-right: 50px;
+}
+
 @media only screen and (max-width : 992px) {
   header, main, footer {
     padding-left: 0;

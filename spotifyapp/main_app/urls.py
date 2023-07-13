@@ -9,5 +9,6 @@ urlpatterns = [
     path("artist/create/", views.ArtistCreate.as_view(), name='artist_create'),
     path("song/create/", views.SongCreate.as_view(), name='song_create'),
     path("playlist/create/", views.PlaylistCreate.as_view(), name='playlist_create'),
-    path('<int:playlist_id>/assoc_song/<int:song_id>/', views.assoc_song, name="assoc_song")
+    path('<int:playlist_id>/assoc_song/<int:song_id>/', views.assoc_song, name="assoc_song"),
+    path('accounts/signup/', views.signup, name='signup'),
 ]

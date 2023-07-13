@@ -44,35 +44,54 @@ class PlaylistCreate(CreateView):
 
 class SongCreate(CreateView):
     model = Song
-    fields = ["name", "artist"]
+    fields = ["name", "album"]
 
-class AuthURL(APIView):
-  def get(self, request, format=None):
-    scopes = 'user-read-playback-state user-modify-playback-state user-read-currently-playing user-library-read user-read-private'
+def signup(request):
+    error_message = ''
+    if request.method == 'POST':
+    # This is how to create a 'user' form object
+    # that includes the data from the browser
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+        # This will add the user to the database
+            user = form.save()
+        # This is how we log a user in via code
+        login(request, user)
+        return redirect('home')
+    else:
+        error_message = 'Invalid sign up - try again'
+    # A bad POST or a GET request, so render signup.html with an empty form
+    form = UserCreationForm()
+    context = {'form': form, 'error_message': error_message}
+    return render(request, 'registration/signup.html', context)
 
-    url = Request('GET', 'https://accounts.spotify.com/authorize', params={
-      'scope': scopes,
-      'response_type': 'code',
-      'redirect_uri': REDIRECT_URI,
-      'client_id': CLIENT_ID
-    }).prepare().url
+# class AuthURL(APIView):
+#   def get(self, request, format=None):
+#     scopes = 'user-read-playback-state user-modify-playback-state user-read-currently-playing user-library-read user-read-private'
 
-    return Response({'url': url}, status=status.HTTP_200_OK)
+#     url = Request('GET', 'https://accounts.spotify.com/authorize', params={
+#       'scope': scopes,
+#       'response_type': 'code',
+#       'redirect_uri': REDIRECT_URI,
+#       'client_id': CLIENT_ID
+#     }).prepare().url
 
-def spotify_callback(request, format=None):
-  code = request.GET.get('code')
-  error = request.GET.get('error')
+#     return Response({'url': url}, status=status.HTTP_200_OK)
 
-  response = post('https://accounts.spotify.com/api/token', data={
-    'grant_type': 'authorization_code',
-    'code': code,
-    'redirect_uri': REDIRECT_URI,
-    'client_id': CLIENT_ID,
-    'client_secret': CLIENT_SECRET
-  }).json()
+# def spotify_callback(request, format=None):
+#   code = request.GET.get('code')
+#   error = request.GET.get('error')
 
-  access_token = response.get('access_token')
-  token_type = response.get('token_type')
-  refresh_token = response.get('refresh_token')
-  expires_in = response.get('expires_in')
-  error = response.get('error')
+#   response = post('https://accounts.spotify.com/api/token', data={
+#     'grant_type': 'authorization_code',
+#     'code': code,
+#     'redirect_uri': REDIRECT_URI,
+#     'client_id': CLIENT_ID,
+#     'client_secret': CLIENT_SECRET
+#   }).json()
+
+#   access_token = response.get('access_token')
+#   token_type = response.get('token_type')
+#   refresh_token = response.get('refresh_token')
+#   expires_in = response.get('expires_in')
+#   error = response.get('error')

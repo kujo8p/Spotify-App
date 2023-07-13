@@ -1,11 +1,16 @@
 {% extends 'base.html' %} 
 
 {% block content %}
+
+
 <div class="container">
   <h1>Home</h1>
 </div>
-  {% for playlist in playlists %}
-  <div class="container">
+
+
+<div class="row">
+    {% for playlist in playlists %}
+    <div class="col s12 m8 offset-m1 xl7 offset-xl1">
     <div class="card">
       <div class="card-content ">
         <span class="card-title">{{ playlist.title }}</span>
@@ -26,6 +31,11 @@
     </div>
   </div>
   {% endfor %}
+
+
+
+
+
 </div>
 
 {% endblock %}
