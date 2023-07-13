@@ -16,11 +16,11 @@
     <ul id="slide-out" class="sidenav sidenav-fixed">
       <div class="row">
         <div>
-          <h5>Profile</h5>
+          <h4>Profile</h4>
           {% if user.is_authenticated %}
 
         <ul>
-          <li> {{ user }}</li>
+          <li class="user"> {{ user }}</li>
           <li><a href="{% url 'logout' %}">Log Out</a></li>
         </ul>
         {% else %}
@@ -33,7 +33,7 @@
     </div>
     <li><div class="divider"></div></li>
       <li>
-        <a href="{% url 'home' %}"><b>Spotify App</b></a>
+        <a href="{% url 'home' %}"><b>Home</b></a>
       </li>
 
       <li>

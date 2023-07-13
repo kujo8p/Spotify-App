@@ -7,7 +7,7 @@ from requests import Request, post
 from rest_framework import status
 from rest_framework.response import Response
 from .models import Artist, Song, Playlist, User
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, DeleteView
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
@@ -54,6 +54,10 @@ class PlaylistCreate(CreateView):
     def form_valid(self, form):
       form.instance.user = self.request.user
       return super().form_valid(form)
+
+class PlaylistDelete(DeleteView):
+    model = Playlist
+    success_url = "/"
 
 
 class SongCreate(CreateView):
