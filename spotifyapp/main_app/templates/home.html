@@ -11,10 +11,10 @@
 <div class="container">
     {% for playlist in playlists %}
     <div class="col s12 m8 offset-m1 xl7 offset-xl1">
-      <a href="{% url 'playlist_detail' playlist.id %}">
-    <div class="card">
-      <div class="card-content ">
-        <div class="card-action right">
+      <div class="card">
+        <div class="card-content ">
+          <div class="card-action right">
+          <a href="{% url 'playlist_detail' playlist.id %}"><i class="material-icons">details</i></a>
           <a href="{% url 'playlist_delete' playlist.id %}"><i class="material-icons">delete</i></a>
         </div>
         <span class="card-title"><b>{{ playlist.title }}</b></span>
@@ -36,12 +36,11 @@
       </div>
     </div>
   </div>
-  </a>
   {% endfor %}
-
-
-
-
-
 </div>
+
+
+
+
+
 {% endblock %}
