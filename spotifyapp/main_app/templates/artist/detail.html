@@ -3,6 +3,7 @@
 <div class="container">
   <h3>Songs by </h3>
   <h4> {{ artist.name }} </h4>
+  <a href="{% url 'song_create' %}" class="waves-effect waves-light btn-large grey darken-4">Add a New Song</a>
 </div>
 <br>
 {% for songs in artist.song_set.all %}

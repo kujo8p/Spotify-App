@@ -5,20 +5,21 @@
 
 <div class="container">
   <h1>Playlist Feed</h1>
+  <a href="{% url 'playlist_create' %}" class="waves-effect waves-light btn-large grey darken-4">Create a New Playlist</a>
 </div>
-
+<br>
 <div class="container">
     {% for playlist in playlists %}
     <div class="col s12 m8 offset-m1 xl7 offset-xl1">
       <a href="{% url 'playlist_detail' playlist.id %}">
     <div class="card">
       <div class="card-content ">
-        <span class="card-title"><b>{{ playlist.title }}</b></span>
-        <p class="truncate">{{ playlist.description }}</p>
-        <br>
         <div class="card-action right">
           <a href="{% url 'playlist_delete' playlist.id %}"><i class="material-icons">delete</i></a>
         </div>
+        <span class="card-title"><b>{{ playlist.title }}</b></span>
+        <p class="truncate">{{ playlist.description }}</p>
+        <br>
         <p>Posted by: {{ playlist.user }}</p>
         <br>
         {% for song in playlist.songs.all %}

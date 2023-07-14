@@ -62,7 +62,7 @@ class PlaylistDelete(DeleteView):
 
 class SongCreate(CreateView):
     model = Song
-    fields = ["name", "album"]
+    fields = ["name", "album", "artist"]
 
 def signup(request):
   error_message = ''
