@@ -25,6 +25,7 @@ def artist_index(request):
   return render(request, "artist/index.html", {'artists': artists})
 
 def artist_detail(request, artist_id):
+    print(artist_id)
     artist = Artist.objects.get(id=artist_id)
     songs = Song.objects.all()
     return render(request, 'artist/detail.html', {

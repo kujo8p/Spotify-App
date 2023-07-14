@@ -20,6 +20,9 @@ class Song(models.Model):
   def __str__(self):
       return self.name
 
+  def get_absolute_url(self):
+      return reverse('artist_detail', kwargs={'artist_id': self.artist.id})
+
 class Playlist(models.Model):
   title = models.CharField(max_length=50)
   description = models.TextField(max_length=200)
