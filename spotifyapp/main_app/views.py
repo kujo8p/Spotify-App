@@ -36,19 +36,19 @@ def artist_detail(request, artist_id):
 def playlist_detail(request, playlist_id):
     playlist = Playlist.objects.get(id=playlist_id)
     current_songs = playlist.songs.all().values_list('id')
-    availible_songs = Song.objests.exclude(id__in=current_songs)
+    availible_songs = Song.objects.exclude(id__in=current_songs)
     return render (request, 'playlist/detail.html', {
       'playlist': playlist, 'availible_songs': availible_songs
     })
 
 def assoc_song(request, playlist_id, song_id):
     Playlist.objects.get(id=playlist_id).songs.add(song_id)
-    return redirect('home', playlist_id=playlist_id)
+    return redirect('playlist_detail', playlist_id=playlist_id)
 
 def load_songs(request):
     playlist_id = request.GET.get('playlist')
     songs = Playlist.objects.get(id=playlist_id).songs.all().order_by('name')
-    return render(request, 'playlist_song_dropdown.html', {'songs': songs})
+    return render(request, 'playlist/playlist_song_dropdown.html', {'songs': songs})
 
 class ArtistCreate(CreateView):
     model = Artist

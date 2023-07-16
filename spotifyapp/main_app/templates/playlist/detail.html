@@ -21,16 +21,27 @@
       </tbody>
     </table>
   </ul>
-    {% endfor %}
+  {% endfor %}
+  <div>
+    <br>
+    <ul class="collapsible">
+      <li>
+        <div class="collapsible-header">Add a Song<i class="material-icons right">arrow_drop_down</i></div>
+        <div class="collapsible-body">
+          {% if availible_songs.count %}
+  {% for song in availible_songs %}
+  <h6> {{ song.name }}</h6>
+  <form action="{% url 'assoc_song' playlist.id song.id %}" method="POST">
+    {% csrf_token %}
+    <button type="submit" class="btn-large grey darken-4">Add Song to Playlist</button>
+  </form>
+  {% endfor %}
+  {% endif %}
   </div>
 </div>
-</div>
-
-
-
-
-
-
+      </li>
+    </ul>
+  </div>
 </div>
 </div>
 {% endblock %}
