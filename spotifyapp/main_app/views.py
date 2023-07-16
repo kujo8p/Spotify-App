@@ -45,6 +45,10 @@ def assoc_song(request, playlist_id, song_id):
     Playlist.objects.get(id=playlist_id).songs.add(song_id)
     return redirect('playlist_detail', playlist_id=playlist_id)
 
+def unassoc_song(request, playlist_id, song_id):
+  Playlist.objects.get(id=playlist_id).songs.remove(song_id)
+  return redirect('playlist_detail', playlist_id=playlist_id)
+
 def load_songs(request):
     playlist_id = request.GET.get('playlist')
     songs = Playlist.objects.get(id=playlist_id).songs.all().order_by('name')
