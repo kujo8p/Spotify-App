@@ -33,7 +33,7 @@
   <h6> {{ song.name }}</h6>
   <form action="{% url 'assoc_song' playlist.id song.id %}" method="POST">
     {% csrf_token %}
-    <button type="submit" class="btn-large grey darken-4">Add Song to Playlist</button>
+    <button type="submit" class="btn grey darken-4">Add Song to Playlist</button>
   </form>
   {% endfor %}
   {% endif %}
