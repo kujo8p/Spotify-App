@@ -17,10 +17,14 @@
         <tr>
           <h5>{{ song.name }}</h5>
           <p>{{ song.artist }}</p>
+          {% if user.is_authenticated %}
+          {% if user == comment.user %}
           <form action="{% url 'unassoc_song' playlist.id song.id %}" method="POST">
             {% csrf_token %}
             <button type="submit" class="btn grey darken-3">Remove</button>
           </form>
+          {% endif %}
+          {% endif %}
         </tr>
       </tbody>
     </table>
@@ -28,6 +32,8 @@
   {% endfor %}
   <div>
     <br>
+    {% if user.is_authenticated %}
+    {% if user == comment.user %}
     <ul class="collapsible">
       <li>
         <div class="collapsible-header">Add a Song<i class="material-icons right">arrow_drop_down</i></div>
@@ -41,10 +47,12 @@
   </form>
   {% endfor %}
   {% endif %}
-  </div>
 </div>
-      </li>
-    </ul>
+</div>
+</li>
+</ul>
+{% endif %}
+{% endif %}
   </div>
 </div>
 </div>
