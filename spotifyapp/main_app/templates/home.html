@@ -34,8 +34,16 @@
       </ul>
       {% endfor %}
       <br>
-      <button>Add Song to Playlist</button>
+      <!-- <button>Add Song to Playlist</button> -->
+      {% if availible_songs.count %}
+      {% for song in availible_songs %}
+      <form action="{% url 'assoc_song' playlist.id song.id %}" method="POST">
+        {% csrf_token %}
+        <button type="submit" class="btn-large grey darken-4">Add Song to Playlist</button>
+      </form>
       </div>
+      {% endfor %}
+      {% endif %}
     </div>
   </div>
   {% endfor %}
