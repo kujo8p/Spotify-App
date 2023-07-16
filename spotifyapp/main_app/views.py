@@ -15,6 +15,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 
 def home(request):
     playlists = Playlist.objects.all()
+
     return render(request, "home.html", {'playlists': playlists})
 
 def about(request):
@@ -34,8 +35,10 @@ def artist_detail(request, artist_id):
 
 def playlist_detail(request, playlist_id):
     playlist = Playlist.objects.get(id=playlist_id)
+    current_songs = playlist.songs.all().values_list('id')
+    availible_songs = Song.objests.exclude(id__in=current_songs)
     return render (request, 'playlist/detail.html', {
-      'playlist': playlist
+      'playlist': playlist, 'availible_songs': availible_songs
     })
 
 def assoc_song(request, playlist_id, song_id):
