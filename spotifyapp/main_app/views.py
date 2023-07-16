@@ -57,12 +57,12 @@ def load_songs(request):
     return render(request, 'playlist/playlist_song_dropdown.html', {'songs': songs})
 
 
-class ArtistCreate(CreateView):
+class ArtistCreate(LoginRequiredMixin, CreateView):
     model = Artist
     fields = ["name", "genre"]
 
 
-class PlaylistCreate(CreateView):
+class PlaylistCreate(LoginRequiredMixin, CreateView):
     model = Playlist
     fields = ["title", "description"]
     success_url = ""
@@ -72,12 +72,12 @@ class PlaylistCreate(CreateView):
       return super().form_valid(form)
 
 
-class PlaylistDelete(DeleteView):
+class PlaylistDelete(LoginRequiredMixin, DeleteView):
     model = Playlist
     success_url = "/"
 
 
-class SongCreate(CreateView):
+class SongCreate(LoginRequiredMixin, CreateView):
     model = Song
     fields = ["name", "album", "artist"]
 
