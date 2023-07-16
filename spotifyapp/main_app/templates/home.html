@@ -15,7 +15,11 @@
         <div class="card-content ">
           <div class="card-action right">
           <a href="{% url 'playlist_detail' playlist.id %}"><i class="material-icons">details</i></a>
+          {% if user.is_authenticated %}
+          {% if user == comment.user %}
           <a href="{% url 'playlist_delete' playlist.id %}"><i class="material-icons">delete</i></a>
+          {% endif %}
+          {% endif %}
         </div>
         <span class="card-title"><b>{{ playlist.title }}</b></span>
         <p class="truncate">{{ playlist.description }}</p>
