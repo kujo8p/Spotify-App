@@ -12,5 +12,6 @@ urlpatterns = [
     path("playlist/<int:playlist_id>/", views.playlist_detail, name='playlist_detail'),
     path('playlist/<int:pk>/delete', views.PlaylistDelete.as_view(), name='playlist_delete'),
     path('<int:playlist_id>/assoc_song/<int:song_id>/', views.assoc_song, name="assoc_song"),
+    path('ajax/load-songs/', views.load_songs, name='load_songs'),
     path('accounts/signup/', views.signup, name='signup'),
 ]
