@@ -17,6 +17,10 @@
         <tr>
           <h5>{{ song.name }}</h5>
           <p>{{ song.artist }}</p>
+          <form action="{% url 'unassoc_song' playlist.id song.id %}" method="POST">
+            {% csrf_token %}
+            <button type="submit" class="btn grey darken-3">Remove</button>
+          </form>
         </tr>
       </tbody>
     </table>
