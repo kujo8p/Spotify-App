@@ -1,13 +1,10 @@
-{% extends 'base.html' %} 
+{% extends 'base.html' %}
 
 {% block content %}
+
+<h2>Search Results</h2>
+<hr class="center"> 
 <div class="container">
-<h1>Artists</h1>
-<form action="" method="get">
-  <input type="search" name="query" placeholder="Search" aria-label="search">
-  <button class="btn" type="submit">Search</button>
-</form>
-<br>
 </div>
 {% for artist in artists %}
 <div class="container">
@@ -20,6 +17,6 @@
     </div>
   </a>
 </div>
-{% endfor %}
+</div>
 
 {% endblock %}
