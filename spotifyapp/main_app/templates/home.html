@@ -10,13 +10,13 @@
 <br>
 <div class="container">
     {% for playlist in playlists %}
-    <div class="col s12 m8 offset-m1 xl7 offset-xl1">
+    <div>
       <div class="card">
         <div class="card-content ">
           <div class="card-action right">
           <a href="{% url 'playlist_detail' playlist.id %}"><i class="material-icons">details</i></a>
           {% if user.is_authenticated %}
-          {% if user == comment.user %}
+          {% if user == playlist.user %}
           <a href="{% url 'playlist_delete' playlist.id %}"><i class="material-icons">delete</i></a>
           {% endif %}
           {% endif %}
