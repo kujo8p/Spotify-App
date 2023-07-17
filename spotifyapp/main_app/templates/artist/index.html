@@ -3,8 +3,8 @@
 {% block content %}
 <div class="container">
 <h1>Artists</h1>
-<form action="" method="get">
-  <input type="search" name="query" placeholder="Search" aria-label="search">
+<form action="{% url 'search' %}" method="get">
+  <input type="text" name="query" placeholder="Search" aria-label="search">
   <button class="btn" type="submit">Search</button>
 </form>
 <br>

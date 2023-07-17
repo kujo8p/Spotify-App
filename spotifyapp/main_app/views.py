@@ -80,10 +80,10 @@ def searchBar(request):
     query = request.GET.get('query')
     if query:
       artists = Artist.objects.filter(name__icontains=query)
-      return render(request, 'searchbar.html', {'artists': artists})
+      return render(request, 'artist/searchbar.html', {'artists': artists})
     else:
       print("No Artist Found")
-      return render(request, 'searchbar.html', {})
+      return render(request, 'artist/searchbar.html', {})
 
 def signup(request):
   error_message = ''
