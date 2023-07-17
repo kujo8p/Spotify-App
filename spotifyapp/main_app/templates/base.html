@@ -18,7 +18,6 @@
         <div>
           <h4>Profile</h4>
           {% if user.is_authenticated %}
-
         <ul>
           <li class="user"> {{ user }}</li>
           <li><a href="{% url 'logout' %}">Log Out</a></li>

@@ -51,12 +51,6 @@ def unassoc_song(request, playlist_id, song_id):
   Playlist.objects.get(id=playlist_id).songs.remove(song_id)
   return redirect('playlist_detail', playlist_id=playlist_id)
 
-def load_songs(request):
-    playlist_id = request.GET.get('playlist')
-    songs = Playlist.objects.get(id=playlist_id).songs.all().order_by('name')
-    return render(request, 'playlist/playlist_song_dropdown.html', {'songs': songs})
-
-
 class ArtistCreate(LoginRequiredMixin, CreateView):
     model = Artist
     fields = ["name", "genre"]
