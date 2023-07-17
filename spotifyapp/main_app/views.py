@@ -75,6 +75,16 @@ class SongCreate(LoginRequiredMixin, CreateView):
     model = Song
     fields = ["name", "album", "artist"]
 
+def searchBar(request):
+  if request.method == 'GET':
+    query = request.GET.get('query')
+    if query:
+      artists = Artist.objects.filter(name__icontains=query)
+      return render(request, 'searchbar.html', {'artists': artists})
+    else:
+      print("No Artist Found")
+      return render(request, 'searchbar.html', {})
+
 def signup(request):
   error_message = ''
   if request.method == 'POST':
