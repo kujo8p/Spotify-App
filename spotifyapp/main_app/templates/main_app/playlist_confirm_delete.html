@@ -8,7 +8,7 @@
 
   <form action="" method="POST">
     {% csrf_token %}
-    <input type="submit" value="Yes - Delete!" class="btn">
+    <input type="submit" value="Yes - Delete!" class="btn-large grey darken-4">
     <a href="{% url 'playlist_detail' playlist.id %}">Cancel</a>
   </form>
 </div>
