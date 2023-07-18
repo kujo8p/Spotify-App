@@ -14,9 +14,11 @@ Kurt's Links [LinkedIn](https://www.linkedin.com/in/kurt-pendleton-20b936269/) |
 
 ### _Description_
 
+This app is designed to allow users to post playlists of music they enjoy. The added benefit of this app is that it isn't connected to a specific music library so any song by any artist can be added.
 
+<img width="1512" alt="Screenshot 2023-07-18 at 8 12 08 AM" src="https://github.com/kujo8p/Spotify-App/assets/128774836/5d399867-e2cb-4131-bda9-d1d9f0975bbf">
 
-<img width="1264" alt="Screenshot 2023-06-23 at 8 23 39 AM" src="https://github.com/kujo8p/unpopular-opinion/assets/128774836/ca6ef4d1-2c63-463e-bfb3-1fc379491c97">
+<img width="1512" alt="Screenshot 2023-07-18 at 8 14 42 AM" src="https://github.com/kujo8p/Spotify-App/assets/128774836/11ea4575-e7e9-4f74-af2a-3250e4ba22bb">
 ---
 
 ### _Technologies Used_
