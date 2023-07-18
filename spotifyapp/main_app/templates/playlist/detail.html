@@ -21,7 +21,7 @@
           {% if user == playlist.user %}
           <form action="{% url 'unassoc_song' playlist.id song.id %}" method="POST">
             {% csrf_token %}
-            <button type="submit" class="btn grey darken-3">Remove</button>
+            <button type="submit" class="btn-small white"><span class="black-text">Remove</span></button>
           </form>
           {% endif %}
           {% endif %}
@@ -43,7 +43,8 @@
   <h6> {{ song.name }}</h6>
   <form action="{% url 'assoc_song' playlist.id song.id %}" method="POST">
     {% csrf_token %}
-    <button type="submit" class="btn grey darken-4">Add Song to Playlist</button>
+    <button type="submit" class="btn-small white"><span class="black-text">Add Song to Playlist</span></button>
+
   </form>
   {% endfor %}
   {% endif %}

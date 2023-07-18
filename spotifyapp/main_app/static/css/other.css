@@ -14,7 +14,6 @@ footer {
 
 .card {
   background-image: url("../pictures/background.jpeg");
-  width: 700px;
 }
 
 h4 {
@@ -36,5 +35,11 @@ h4 {
 @media only screen and (max-width : 992px) {
   header, main, footer {
     padding-left: 0;
+  }
+}
+
+@media screen and (min-width : 992px) {
+  .card {
+    width: 700px;
   }
 }
