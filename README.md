@@ -47,3 +47,4 @@ Fork and clone from the repo above and launch via Live Server to enjoy locally.
 
 [Figma](https://www.figma.com/file/wSIyTLNJdd35kVpZebctes/Untitled?type=design&node-id=0-1&mode=design&t=77DpDZLvwKP0LSYk-0)
 
+[Youtube](https://www.youtube.com/watch?v=PQN6wzuGzVI&t=1098s) For search functionality
