@@ -2,10 +2,6 @@ import os
 import uuid
 from django.shortcuts import render, redirect
 from .credentials import REDIRECT_URI, CLIENT_ID, CLIENT_SECRET
-from rest_framework.views import APIView
-from requests import Request, post
-from rest_framework import status
-from rest_framework.response import Response
 from .models import Artist, Song, Playlist, User
 from django.views.generic.edit import CreateView, DeleteView
 from django.contrib.auth import login

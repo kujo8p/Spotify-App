@@ -16,6 +16,10 @@ footer {
   background-image: url("../pictures/background.jpeg");
 }
 
+.sidenav {
+  background-image: url("../pictures/background.jpeg");
+}
+
 h4 {
   padding-left: 30px;
 }
