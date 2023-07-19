@@ -31,7 +31,7 @@ This app is designed to allow users to post playlists of music they enjoy. The a
 
 ### _Getting Started_
 
-
+[GitHub](https://github.com/kujo8p/Spotify-App)
 
 Fork and clone from the repo above and launch via Live Server to enjoy locally.
 
